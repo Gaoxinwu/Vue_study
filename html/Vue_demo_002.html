@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg"/>
+    <h2>{{msg}}</h2>
+    <ul v-for="item in myList">
+        <li>{{item}}</li>
+    </ul>
+    <ul v-for="(item,idx) in myList">
+        <li>{{'下标是：'+idx+',内容是：'+item}}</li>
+    </ul>
+    <p v-if="hasMore">没有更多数据可以加载了...</p>
+    <p v-if="answer == 1">答案是：1</p>
+    <p v-else-if="answer == 2">答案是：2</p>
+    <p v-else>答案是：3</p>
+
+    <p v-show="hasMore">显示或者隐藏</p>
+
+    <button v-on:click="handleClick">点我啊</button>
+    <button @click="handleClick">再点一次</button>
+
+    <a :href="siteUrl">打开百度</a>
+    <img v-bind:src=" 'img/'+imgUrl " alt="imgUrl"/>
+    <img :src=" 'img/'+imgUrl " alt="imgUrl"/>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            msg:'Hello Vue',
+            myList:[10,20,25,30,'Evan You','JS'],
+            hasMore:1,
+            answer:1,
+            imgUrl:'2.jpg',
+            siteUrl:'http://www.baidu.com'
+        },
+        methods:{
+            handleClick:function(){
+                alert(this.msg);
+            }
+        }
+    });
+</script>
+</body>
+</html>

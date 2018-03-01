@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="addToList">添加</button>
+    <ul v-for="item in myList">
+        <li>
+            <p>{{item.name}}</p>
+            <img :src=" 'img/'+item.imgUrl " alt=""/>
+        </li>
+    </ul>
+</div>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            myList:[
+                {name:'鱼香肉丝',imgUrl:'1.jpg'},
+                {name:'回锅肉',imgUrl:'2.jpg'},
+                {name:'红烧茄子',imgUrl:'3.jpg'},
+            ]
+        },
+        methods:{
+            addToList:function(){
+                this.myList.push(
+                        {name:'尖椒肉丝',imgUrl:'4.jpg'}
+                );
+            }
+        }
+    });
+</script>
+</body>
+</html>
