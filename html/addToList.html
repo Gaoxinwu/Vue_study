@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="../css/addToList.css">
     <script src="../js/vue.js"></script>
 </head>
 <body>
@@ -11,7 +12,7 @@
     <ul v-for="item in myList">
         <li>
             <p>{{item.name}}</p>
-            <img :src=" 'img/'+item.imgUrl " alt=""/>
+            <img :src=" '../img/'+item.imgUrl " alt=""/>
         </li>
     </ul>
 </div>
