@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <h1 v-change>Hello Custom Directives</h1>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"hello"
+        },
+        directives:{
+            change:{
+                bind:function (el){
+                    console.log('指令被调用了');
+                    el.style.backgroundColor='#ff0000';
+                    console.log(arguments);
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
