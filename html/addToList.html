@@ -9,7 +9,7 @@
 <body>
 <div id="app">
     <button @click="addToList">添加</button>
-    <ul v-for="item in myList">
+    <ul v-for="item in myList" class="myList">
         <li>
             <p>{{item.name}}</p>
             <img :src=" '../img/'+item.imgUrl " alt=""/>

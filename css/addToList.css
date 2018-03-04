@@ -1,3 +1,8 @@
 img{
     width:200px;
 }
+.myList li{
+    float:left;
+    margin: 20px;
+    list-style: none;
+}
