@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="example">
+    <p>{{msg}}</p>
+    <h1 v-change>自定义指令</h1>
+</div>
+<script>
+    new Vue({
+        el:"#example",
+        data:{
+            msg:'你好啊！'
+        },
+        directives:{
+            change:{
+                bind:function(el){
+                    console.log("指令被调用了");
+                    el.style.backgroundColor="blue";
+                    console.log(arguments);
+                }
+            }
+        }
+    });
+//    ①在Vue的实例中添加一个directives属性，对应的值是一个对象
+//    ②在directives属性对应的对象中，属性名字就是指令名字，属性对应的值就是自定义指令的配置对象
+//    ③每个指令在它的生命周期都有3个阶段
+//    bind/update/unbind
+//    在bind方法中，第一个参数是对应的阶段
+//    ④在使用自定义指令，直接在指令的前边加上‘v-’
+</script>
+</body>
+</html>
