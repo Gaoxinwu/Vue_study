@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <h1 v-hello="count" v-if="count<3">自定义指令传参</h1>
+    <h2>{{"count is"+count}}</h2>
+    <button @click="handleClick">点我啊</button>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:'hello',
+            count:0
+        },
+        methods:{
+           handleClick:function(){
+               this.count++
+           }
+        },
+        directives:{
+            hello:{
+                bind:function(el,obj){
+                    console.log('in bind');
+                    console.log(el,obj);
+                },
+                update:function(el,obj){
+                    console.log('in update');
+                    console.log(el.obj);
+                },
+                unbind:function(){
+                    console.log('in unbind');
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
