@@ -26,7 +26,17 @@
         },
         directives:{
             hello:{
-
+                bind:function(el,obj){
+                    console.log('in bind');
+                    console.log(el,obj);
+                },
+                update:function(el,obj){
+                    console.log('in update');
+                    console.log(el.obj);
+                },
+                unbind:function(){
+                    console.log('in unbind');
+                }
             }
         }
     });
