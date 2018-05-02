@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>基础知识</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-header></my-header>
+</div>
+<script>
+    Vue.component('my-header',{
+        template:'<p>This is my-header 组件</p>'
+    });
+    new Vue({
+        el:'#app',
+//        template:'<p>Hello Vue.js,{{word}}</p>',
+        data:{
+            word:'hello JavaScript !'
+        }
+    });
+</script>
+</body>
+</html>
