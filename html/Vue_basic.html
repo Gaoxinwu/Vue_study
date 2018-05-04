@@ -8,10 +8,17 @@
 <body>
 <div id="app">
     <my-header></my-header>
+    <!--if-->
     <template v-if="active">
         <h1>v-if</h1>
         <p>把一个 template 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 template 元素。</p>
     </template>
+    <div v-if="Math.random()>0.5">now you see me</div>
+    <div v-else>now you don't</div>
+    <!--数据绑定-->
+    <p>{{msg}}</p>
+    <input type="text" v-model="msg">
+    <button @click="reverseMsg">点我逆转消息</button>
 </div>
 
 <script>
@@ -23,7 +30,13 @@
 //        template:'<p>Hello Vue.js,{{word}}</p>',
         data:{
             word:'hello JavaScript !',
-            active:true
+            active:true,
+            msg:'Hello Vue.js!'
+        },
+        methods:{
+            reverseMsg:function(){
+                this.msg=this.msg.split('').reverse().join('');
+            }
         }
     });
 </script>
