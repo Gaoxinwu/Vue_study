@@ -8,16 +8,22 @@
 <body>
 <div id="app">
     <my-header></my-header>
+    <template v-if="active">
+        <h1>v-if</h1>
+        <p>把一个 template 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 template 元素。</p>
+    </template>
 </div>
+
 <script>
     Vue.component('my-header',{
         template:'<p>This is my-header 组件</p>'
     });
-    new Vue({
+    var vm=new Vue({
         el:'#app',
 //        template:'<p>Hello Vue.js,{{word}}</p>',
         data:{
-            word:'hello JavaScript !'
+            word:'hello JavaScript !',
+            active:true
         }
     });
 </script>
