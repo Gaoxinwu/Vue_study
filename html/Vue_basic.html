@@ -20,7 +20,13 @@
     <input type="text" v-model="msg">
     <button @click="reverseMsg">点我逆转消息</button>
 </div>
-
+<div id="app-for">
+    <ul>
+        <li v-for="(item,index) in items">
+            {{'序号 '+index+' : '}}{{item.msg}}
+        </li>
+    </ul>
+</div>
 <script>
     Vue.component('my-header',{
         template:'<p>This is my-header 组件</p>'
@@ -37,6 +43,17 @@
             reverseMsg:function(){
                 this.msg=this.msg.split('').reverse().join('');
             }
+        }
+    });
+    var vf=new Vue({
+        el:'#app-for',
+        data:{
+            items:[
+                {msg:'Angular'},
+                {msg:'React'},
+                {msg:'Vue'},
+                {msg:'NB Project'}
+            ]
         }
     });
 </script>
