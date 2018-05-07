@@ -3,6 +3,11 @@
 <head lang="zh-cn">
     <meta charset="UTF-8">
     <title>基础知识</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+    </style>
     <script src="../js/vue.js"></script>
 </head>
 <body>
@@ -20,6 +25,7 @@
     <input type="text" v-model="msg">
     <button @click="reverseMsg">点我逆转消息</button>
 </div>
+    <!--列表渲染-->
 <div id="app-for">
     <ul>
         <li v-for="(item,index) in items">
@@ -27,6 +33,10 @@
         </li>
     </ul>
 </div>
+<hr/>
+<ul id="v-for-object">
+    <li v-for="(val,key,idx) in object" :key="idx">{{idx }}.{{key}}:{{val}}</li>
+</ul>
 <script>
     Vue.component('my-header',{
         template:'<p>This is my-header 组件</p>'
@@ -54,6 +64,16 @@
                 {msg:'Vue'},
                 {msg:'NB Project'}
             ]
+        }
+    });
+    var vfo=new Vue({
+        el:'#v-for-object',
+        data:{
+            object:{
+                firstName:'Gates',
+                lastName:'Bill',
+                age:58
+            }
         }
     });
 </script>

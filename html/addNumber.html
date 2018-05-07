@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+    <style>
+        ul {
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='number in numbers' :key='number'>{{ number }}</li>
+        </ul>
+        <form @submit.prevent='addNumber'>
+            <input type='text' v-model='newNumber'>
+            <button type='submit'>添加一个数字</button>
+        </form>
+    </div>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            newNumber: null,
+            numbers: [1, 23, 52, 46]
+        },
+        methods:{
+            addNumber:function(){
+                const num = +this.newNumber;
+                if (typeof num === 'number' && !isNaN(num)) {
+                    this.numbers.push(num);
+                }
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
