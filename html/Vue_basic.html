@@ -37,6 +37,11 @@
 <ul id="v-for-object">
     <li v-for="(val,key,idx) in object" :key="idx">{{idx }}.{{key}}:{{val}}</li>
 </ul>
+<hr/>
+<div id="von">
+    <p>这个按钮被点击了{{counter}}次</p>
+    <button v-on:click="counter+=1">点我增加</button>
+</div>
 <script>
     Vue.component('my-header',{
         template:'<p>This is my-header 组件</p>'
@@ -74,6 +79,12 @@
                 lastName:'Bill',
                 age:58
             }
+        }
+    });
+    var von=new Vue({
+        el:'#von',
+        data:{
+            counter:0
         }
     });
 </script>
