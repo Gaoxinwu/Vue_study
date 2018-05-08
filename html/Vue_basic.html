@@ -40,7 +40,7 @@
 <hr/>
 <div id="von">
     <p>这个按钮被点击了{{counter}}次</p>
-    <button v-on:click="counter+=1">点我增加</button>
+    <button @click="addBtn">点我增加</button>
 </div>
 <script>
     Vue.component('my-header',{
@@ -85,6 +85,11 @@
         el:'#von',
         data:{
             counter:0
+        },
+        methods:{
+            addBtn:function(){
+                this.counter++;
+            }
         }
     });
 </script>
