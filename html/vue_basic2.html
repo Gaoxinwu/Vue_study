@@ -13,16 +13,25 @@
     <label for="f">女</label>
     <p>{{choosedata}}</p>
     <hr>
-
+    <btn-counter></btn-counter>
 </div>
 
 <script>
+    Vue.component('btn-counter',{
+        data:function(){
+            return {
+                counter:0
+            }
+        },
+        template:'<button @click="counter++">计数结果为：{{counter}}</button>'
+    });
     new Vue({
         el:'#app',
         data:{
             choosedata:''
         }
     });
+
 </script>
 </body>
 </html>
