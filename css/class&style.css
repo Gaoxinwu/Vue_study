@@ -1,0 +1,24 @@
+@charset "utf-8";
+.container {
+  width: 600px;
+  height: 300px;
+  border: 1px solid #333;
+  background-color: #f3f3f3;
+}
+.container.active .act {
+  display: block;
+}
+.container.active .false {
+  display: none;
+}
+.container.error {
+  background-color: gold;
+  color: #000;
+  text-align: center;
+}
+.container.error .act {
+  display: none;
+}
+.container.error .false {
+  display: block;
+}

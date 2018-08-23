@@ -11,20 +11,57 @@
         <input type="text" :value="reverseMsg" v-model="msg">
         <p>{{reverseMsg}}</p>
         <p>{{ nochacheMsg() }}</p>
-    </div>
 
+        <p>
+            Ask a yes/no question:
+            <input v-model="question" type="text">
+        </p>
+        <p>{{ answer }}</p>
+        <p><img :src="imgUrl" alt=""></p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script>
      let app=new Vue({
         el:'#app',
         data:{
-            msg:'Hello 你好啊'
+            msg:'Hello 你好啊',
+            question: '',
+            answer: 'I cannot give you an answer until you ask a question!',
+            imgUrl: ''
         },
          methods:{
             nochacheMsg(){//没有缓存，每当触发重新渲染时，调用方法将总会再次执行函数
                 return this.msg.split('').reverse().join('');
-            }
+            },
+             getAnswer: function () {
+                 if (this.question.indexOf('?') === -1) {
+                     this.answer = 'Questions usually contain a question mark. ;-)'
+                     return
+                 }
+                 this.answer = 'Thinking...'
+                 var vm = this
+                 axios.get('https://yesno.wtf/api')
+                     .then(function (response) {
+                         vm.answer = _.capitalize(response.data.answer);
+                         vm.imgUrl = _.capitalize(response.data.image)
+                     })
+                     .catch(function (error) {
+                         vm.answer = 'Error! Could not reach the API. ' + error
+                     })
+             }
          },
-        computed:{
+         created:function(){
+             this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+         },
+         watch:{
+             question: function (newQuestion, oldQuestion) {
+                 this.answer = 'Waiting for you to stop typing...';
+                 this.debouncedGetAnswer()
+             }
+         },
+         computed:{
 //            reverseMsg:function(){
 //                return this.msg.split('').reverse().join('');
 //            },

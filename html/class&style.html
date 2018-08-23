@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Class 与 Style 绑定</title>
+    <link rel="stylesheet" href="../css/class&style.css">
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="container" :class="classObj">
+        <div class="act">
+            active 为true
+        </div>
+        <div class="false">
+            active 为false
+        </div>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            isActive:false,
+            error:true
+        },
+        computed:{
+            classObj:function (){
+                return {
+                    active:this.isActive,
+                    error:this.error
+                }
+            },
+        },
+
+        method:{
+            getErrorStatus(){
+                let vm=this;
+                let random=Math.random();
+                vm.error=random>0.5 ? true : false;
+            }
+        }
+
+    });
+</script>
+</body>
+</html>
