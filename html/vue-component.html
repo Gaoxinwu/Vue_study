@@ -7,26 +7,26 @@
 </head>
 <body>
 <div id="app">
-    <ol>
+    <ul>
         <todo-item
                 v-for="item in items"
                 :todo="item"
                 :key="item.id">
         </todo-item>
-    </ol>
+    </ul>
 </div>
 <script>
     Vue.component('todo-item',{
         props:['todo'],
-        template:'<li>{{todo.text}}</li>'
+        template:'<li>{{todo.id}},{{todo.text}},{{todo.info}}</li>'
     });
     var app=new Vue({
         el:'#app',
         data:{
             items:[
-                {id:0,text:'蔬菜'},
-                {id:1,text:'水果'},
-                {id:2,text:'牛奶'}
+                {id:0,text:'蔬菜',info:'吃的'},
+                {id:1,text:'水果',info:'吃的'},
+                {id:2,text:'牛奶',info:'喝的'}
             ]
         }
     });

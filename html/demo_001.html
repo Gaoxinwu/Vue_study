@@ -8,13 +8,27 @@
 <div id="app">
     <input type="text" v-model="message"/>
     <p>{{message}}</p>
+    <button @click="addItem">添加</button>
+    <ol>
+        <li v-for="item in todos">{{item.text}}</li>
+    </ol>
 </div>
 <script src="../js/vue.js"></script>
 <script>
     var app=new Vue({
         el:"#app",
         data:{
-            message:'Hello Vue!'
+            message:'Hello Vue!',
+            todos:[
+                {text:'学习JavaScript'} ,
+                {text:'学习HTML'} ,
+                {text:'学习Vue'} ,
+            ]
+        },
+        methods:{
+            addItem:function(){
+                this.todos.push({'text':'新的项目'});
+            }
         }
     });
 </script>
