@@ -3,20 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>待办事项</title>
+    <link rel="stylesheet" href="../css/todolist.css">
     <script src="../js/vue.js"></script>
 </head>
 <body>
-<div id="app">
-
+<div id="app" class="container">
+    <form action="" @submit.prevent="addNewTodo">
+        <input type="text" v-model="addText" v-focus="error" placeholder="请输入待办事项" maxlength="50">
+        <button>＋ 添加</button>
+        <p v-show="error" class="tips">{{tips}}</p>
+    </form>
+    <ul >
+        <li is="todo-item"
+            v-for="(todo,idx) in todos"
+            :key="todo.id"
+            :title="todo.title"
+            :index="todo.id"
+            class="todoItem"
+            @remove="remove(idx)"
+        ></li>
+    </ul>
 </div>
 <script>
-    let app=new Vue({
+    Vue.component('todo-item',{
+        template:`
+        <li>
+            <p>{{index}}. {{title}}</p>
+            <p class="btn" @click="$emit('remove')">× 删除</p>
+        </li>
+        `,
+        props:['title','index'],
+
+    });
+    Vue.directive('focus', {
+        bind: function (el) {
+            el.focus()
+        }
+    })
+    app=new Vue({
         el:'#app',
         data:{
-
+            addText:'',
+            todos:[],
+            initId:1,
+            tips:'',
+            error:false
         },
         methods:{
-
+            addNewTodo:function(){
+                let vm=this;
+                if(!vm.addText){
+                    vm.tips='请输入待办项';
+                    vm.error=true;
+                    //待完成：提示错误的同时使输入框获得焦点
+                    return;
+                }
+                vm.error=false;
+                vm.todos.push({
+                    id:vm.initId++,
+                    title:vm.addText
+                })
+                vm.addText=''
+            },
+            remove:function(index){
+                let vm=this;
+                if(confirm('您确定要删除该待办吗？')){
+                    vm.todos.splice(index,1);
+                }
+            },
         }
 
     });

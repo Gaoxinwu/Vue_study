@@ -8,12 +8,18 @@
 <body>
 <div id="app">
     <ul v-for="(val,key,index) in obj">
-        <li>
+        <li :key="index">
             value: {{val}}<br>
             key: {{key}}<br>
             index: {{index}}
         </li>
     </ul>
+    <ol v-for="(val,index) in farray">
+        <li :key="index">{{val}}</li>
+    </ol>
+    <div >
+        <span v-for="n in 10"> {{n}} </span>
+    </div>
 </div>
 <script>
     app=new Vue({
@@ -23,7 +29,12 @@
               name:'小明',
               age:18,
               score:100,
-          }
+          },
+          farray:[
+              'vue',
+              'js',
+              'html'
+          ]
         },
     });
 </script>
