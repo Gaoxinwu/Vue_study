@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for对象</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul v-for="(val,key,index) in obj">
+        <li>
+            value: {{val}}<br>
+            key: {{key}}<br>
+            index: {{index}}
+        </li>
+    </ul>
+</div>
+<script>
+    app=new Vue({
+        el:'#app',
+        data:{
+          obj:{
+              name:'小明',
+              age:18,
+              score:100,
+          }
+        },
+    });
+</script>
+</body>
+</html>
