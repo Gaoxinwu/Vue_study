@@ -21,8 +21,8 @@
     var app=new Vue({
         el:'#app',
         data:{
-            isActive:false,
-            error:true
+            isActive:true,
+            error:false
         },
         computed:{
             classObj:function (){
@@ -32,13 +32,16 @@
                 }
             },
         },
+        mounted:function(){
 
+        },
         method:{
-            getErrorStatus(){
+            getErrorStatus:function(){
                 let vm=this;
                 let random=Math.random();
                 vm.error=random>0.5 ? true : false;
-            }
+            },
+
         }
 
     });
