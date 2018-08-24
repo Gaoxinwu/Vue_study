@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单输入绑定</title>
+    <link rel="stylesheet" href="../css/forms.css">
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <input type="text" v-model="msg" class="typeinput" @click="suggestshow=true">
+        <div class="suggest" v-show="suggestshow">
+            <p>{{msg}}</p>
+        </div>
+        <p>{{textmsg}}</p>
+        <textarea v-model="textmsg"></textarea>
+    </div>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'',
+            suggestshow:false,
+            textmsg:''
+        }
+    });
+</script>
+</body>
+</html>
