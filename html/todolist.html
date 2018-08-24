@@ -9,7 +9,7 @@
 <body>
 <div id="app" class="container">
     <form action="" @submit.prevent="addNewTodo">
-        <input type="text" v-model="addText" v-focus="error" placeholder="请输入待办事项" maxlength="50">
+        <input type="text" :class="{errorinput:error}" v-model="addText" v-focus="error" placeholder="请输入待办事项" maxlength="50">
         <button>＋ 添加</button>
         <p v-show="error" class="tips">{{tips}}</p>
     </form>
