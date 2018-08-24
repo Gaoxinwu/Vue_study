@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<p>古人云：“君子一诺千金”，这种“承诺将来会执行”的对象在JavaScript中称为Promise对象。</p>
+
+<script>
+    test();
+    function test(resolve, reject) {
+        var timeOut = Math.random() * 2;
+        console.log('set timeout to: ' + timeOut + ' seconds.');
+        setTimeout(function () {
+            if (timeOut < 1) {
+                console.log('call resolve()...');
+                resolve('200 OK');
+            }
+            else {
+                console.log('call reject()...');
+                reject('timeout in ' + timeOut + ' seconds.');
+            }
+        }, timeOut * 1000);
+    }
+</script>
+</body>
+</html>

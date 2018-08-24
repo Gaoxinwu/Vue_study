@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <input type="text" :value="reverseMsg" v-model="msg">
+        <p>{{reverseMsg}}</p>
+        <p>{{ nochacheMsg() }}</p>
+    </div>
+
+<script>
+     let app=new Vue({
+        el:'#app',
+        data:{
+            msg:'Hello 你好啊'
+        },
+         methods:{
+            nochacheMsg(){//没有缓存，每当触发重新渲染时，调用方法将总会再次执行函数
+                return this.msg.split('').reverse().join('');
+            }
+         },
+        computed:{
+//            reverseMsg:function(){
+//                return this.msg.split('').reverse().join('');
+//            },
+            reverseMsg(){//有缓存
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
