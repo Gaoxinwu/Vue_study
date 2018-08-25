@@ -9,7 +9,7 @@
 <body>
 <div id="app">
     <div class="container">
-        <input type="text" v-model="msg" class="typeinput" @click="suggestshow=true">
+        <input type="text" v-model.trim="msg" class="typeinput" @click="suggestshow=true">
         <div class="suggest" v-show="suggestshow">
             <p>{{msg}}</p>
         </div>
@@ -51,6 +51,7 @@
             <option v-for="opt in options" :value="opt.value">{{opt.text}}</option>
         </select>
         <p>选中值：{{selectVal}}</p>
+
     </div>
 </div>
 <script>
