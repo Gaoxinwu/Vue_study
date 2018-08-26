@@ -61,7 +61,7 @@
             <h6>更新时间：{{post.create_time}}</h6>
             <p v-html="post.content"></p>
             <button @click="$emit('enlarge','0.1')">增大字体</button>
-            <button @click="$emit('shrink')">缩小字体</button>
+            <button @click="$emit('shrink','0.01')">缩小字体</button>
         </div>
         `
     });
@@ -78,13 +78,15 @@
         methods:{
             enlarge:function(event){
                 let vm=this;
-                event=parseFloat(event);
+                event=parseFloat(event).toFixed(2);
                 console.log(event);
                 vm.comFontSize+=event;
             },
             shrink:function(event){
                 let vm=this;
-                vm.comFontSize-=0.1;
+                event=parseFloat(event).toFixed(2);
+                console.log(event);
+                vm.comFontSize-=event;
             }
         }
     });
