@@ -22,11 +22,16 @@
             ></blog>
     <hr/>
     <h2>组件改造</h2>
-    <blog-post
-           v-for="post in posts"
-           :key="post.id"
-           :post="post"
-            ></blog-post>
+    <div :style="{fontSize:comFontSize +'em'}">
+        <blog-post
+                v-for="post in posts"
+                :key="post.id"
+                :post="post"
+                @enlarge="enlarge($event)"
+                @shrink="shrink($event)"
+                ></blog-post>
+    </div>
+
 </div>
 <script>
     Vue.component('button-counter',{
@@ -55,6 +60,8 @@
             <h3>{{post.title}}</h3>
             <h6>更新时间：{{post.create_time}}</h6>
             <p v-html="post.content"></p>
+            <button @click="$emit('enlarge','0.1')">增大字体</button>
+            <button @click="$emit('shrink')">缩小字体</button>
         </div>
         `
     });
@@ -65,7 +72,20 @@
                 {id:0,title:'My journey with Vue',create_time:'2018-08-26',content:'<span style="color:red;">红色的内容</span>'},
                 {id:1,title:'Blogging with Vue',create_time:'2018-08-26',content:'test'},
                 {id:3,title:'Why Vue is so fun',create_time:'2018-08-26',content:''},
-            ]
+            ],
+            comFontSize:1
+        },
+        methods:{
+            enlarge:function(event){
+                let vm=this;
+                event=parseFloat(event);
+                console.log(event);
+                vm.comFontSize+=event;
+            },
+            shrink:function(event){
+                let vm=this;
+                vm.comFontSize-=0.1;
+            }
         }
     });
 
