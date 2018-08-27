@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>slot</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <navigation-link
+        url="/home"
+    >
+        <span style="color:red;">回到主页</span>
+    </navigation-link>
+    <hr>
+    <submit-button></submit-button>
+    <submit-button>保存</submit-button>
+    <submit-button>上传图片</submit-button>
+    <submit-button>{{btns.down}}</submit-button>
+    <hr>
+    <h3>具名插槽</h3>
+    <base-layout>
+        <template slot="header">
+            <h2>Here is the page title</h2>
+        </template>
+        <p>这里是具体的内容</p>
+        <p>这里也是具体的内容第二段</p>
+        <div>第三段div也能插入默认的slot</div>
+        <template slot="footer">
+            <a href="">关于我们</a>
+            <a href="">联系我们</a>
+            <a href="">电话：13000000000</a>
+        </template>
+    </base-layout>
+    <!--作用域插槽-->
+
+</div>
+<script>
+    Vue.component('navigation-link',{
+        props:['url'],
+        template:`
+            <a
+            :href="url">
+                <slot></slot>
+            </a>
+        `
+    });
+    Vue.component('submit-button',{
+        template:`
+            <button type="submit">
+                <slot>提交</slot>
+            </button>
+        `
+    });
+    Vue.component('base-layout',{
+        template:`
+           <div class="container">
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main>
+                    <slot ></slot>
+                </main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+        `
+    });
+    new Vue({
+        el:'#app',
+        data:{
+            btns:{
+                down:'下载'
+            }
+        }
+    });
+</script>
+</body>
+</html>
