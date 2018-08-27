@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件注册,prop</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <blog-post
+        post-title="测试test"
+    ></blog-post>
+    <!--如下写法为什么是错的？-->
+    <blog
+        :post="post"
+        @postthis="postthis($event)"
+    ></blog>
+</div>
+<script>
+    Vue.component('blog-post',{
+        props:['postTitle'],
+        template:'<h3>{{postTitle}}</h3>'
+    });
+    Vue.component('blog',{
+        props:['post'],
+        template:`
+        <div>
+            <h3>{{post.title}}</h3>
+            <p>{{post.content}}</p>
+            <p>{{post.author}}</p>
+            <button @click="$emit('postthis',post)">button</button>
+        </div>
+        `
+    });
+    new Vue({
+        el:'#app',
+        data:{
+            post:{
+                id:234,
+                title:'My journey with Vue',
+                content:'My journey with Vue is so funny !',
+                author:'尤大神'
+            }
+        },
+        methods:{
+            postthis:function(event){
+                console.log(event)
+            }
+        }
+    })
+</script>
+</body>
+</html>
