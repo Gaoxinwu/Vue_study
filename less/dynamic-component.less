@@ -1,0 +1,15 @@
+@charset "utf-8";
+@base_bgcolor:#ddd;
+.btn-box{
+  display:flex;
+
+  .btn{
+    padding:5px 10px;
+    cursor:pointer;
+    background-color: @base_bgcolor;
+    border-radius: 3px;
+    &.active{
+      background-color: darken(@base_bgcolor,50%);
+    }
+  }
+}

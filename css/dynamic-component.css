@@ -1,0 +1,13 @@
+@charset "utf-8";
+.btn-box {
+  display: flex;
+}
+.btn-box .btn {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #ddd;
+  border-radius: 3px;
+}
+.btn-box .btn.active {
+  background-color: #5e5e5e;
+}

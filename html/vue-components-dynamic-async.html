@@ -8,18 +8,20 @@
 </head>
 <body>
 <div id="app">
-    <button
-            v-for="tab in tabs"
-            :key="tab"
-            :class="['tab-button', { active: currentTab === tab }]"
-            @click="currentTab = tab"
-    >{{ tab }}</button>
-    <keep-alive>
-        <component
-                v-bind:is="currentTabComponent"
-                class="tab"
-        ></component>
-    </keep-alive>
+    <div class="container">
+        <button
+                v-for="tab in tabs"
+                :key="tab"
+                :class="['tab-button', { active: currentTab === tab }]"
+                @click="currentTab = tab"
+        >{{ tab }}</button>
+        <keep-alive>
+            <component
+                    v-bind:is="currentTabComponent"
+                    class="tab"
+            ></component>
+        </keep-alive>
+    </div>
 </div>
 <script>
     Vue.component('tab-posts', {
@@ -80,7 +82,7 @@
         el:'#app',
         data: {
             currentTab: 'Posts',
-            tabs: ['Posts', 'Archive']
+            tabs: ['Posts', 'Archive','Test']
         },
         computed: {
             currentTabComponent: function () {

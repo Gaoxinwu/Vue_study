@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <link rel="stylesheet" href="../css/dynamic-component.css">
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="btn-box">
+            <button-component
+                    v-for="tab in tabs"
+                    :tab="tab"
+                    @tabClick="tabClick"
+                    class="btn"
+                    :class="{active:isButtonClicked}"
+            ></button-component>
+        </div>
+
+    </div>
+</div>
+<script>
+    Vue.component('button-component',{
+        props:['tab'],
+        template:`
+            <div>{{tab}}</div>
+        `
+    });
+    new Vue({
+        el:'#app',
+        data:{
+            tabs:['HTML','CSS','JavaScript','Vue'],
+            isButtonClicked:false,
+        },
+        methods:{
+            tabClick:function(){
+
+            }
+        }
+    });
+</script>
+</body>
+</html>
