@@ -13,7 +13,7 @@
             <button-component
                     v-for="tab in tabs"
                     :tab="tab"
-                    @tabClick="tabClick"
+                    @tabclick="tabclick"
                     class="btn"
                     :class="{active:isButtonClicked}"
             ></button-component>
@@ -25,7 +25,7 @@
     Vue.component('button-component',{
         props:['tab'],
         template:`
-            <div>{{tab}}</div>
+            <div @click="$emit('tabclick')">{{tab}}</div>
         `
     });
     new Vue({
@@ -35,8 +35,10 @@
             isButtonClicked:false,
         },
         methods:{
-            tabClick:function(){
-
+            tabclick:function(){
+                let vm=this;
+                console.log('clicked')
+                vm.isButtonClicked=true;
             }
         }
     });
