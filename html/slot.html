@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>插槽</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <alert-box>
+        Something woring happended.
+    </alert-box>
+</div>
+<script>
+    Vue.component('alert-box',{
+        template:`
+          <div>
+            <strong>Error!</strong>
+            <slot></slot>
+          </div>
+        `
+    })
+    new Vue({
+        el:'#app',
+        data: {
+
+        }
+    });
+</script>
+</body>
+</html>

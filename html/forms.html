@@ -9,12 +9,49 @@
 <body>
 <div id="app">
     <div class="container">
-        <input type="text" v-model="msg" class="typeinput" @click="suggestshow=true">
+        <input type="text" v-model.trim="msg" class="typeinput" @click="suggestshow=true">
         <div class="suggest" v-show="suggestshow">
             <p>{{msg}}</p>
         </div>
         <p>{{textmsg}}</p>
         <textarea v-model="textmsg"></textarea>
+        <br/>
+        <h2>复选按钮</h2>
+        <input type="checkbox" id="chkbox" v-model="checked"/>
+        <label for="chkbox">{{checked}}</label>
+        <div class="chk-container">
+            <input type="checkbox" id="js" value="javascript" v-model="checkedName"/>
+            <label for="js">javascript</label>
+
+            <input type="checkbox" id="html" value="html" v-model="checkedName"/>
+            <label for="html">html</label>
+
+            <input type="checkbox" id="CSS" value="CSS" v-model="checkedName"/>
+            <label for="CSS">CSS</label>
+            <p>选中值：{{checkedName}}</p>
+        </div>
+        <h2>单选按钮</h2>
+        <div class="radio-box">
+            <input type="radio" id="one" value="one" v-model="picked"/>
+            <label for="one">one</label>
+            <input type="radio" id="two" value="two" v-model="picked"/>
+            <label for="two">two</label>
+            <p>选中值：{{picked}}</p>
+        </div>
+        <h2>选择框</h2>
+        <select name="selected" v-model="selected">
+            <option disabled value="">请选择</option>
+            <option value="a">111</option>
+            <option value="b">22222</option>
+            <option value="c">333333</option>
+        </select>
+        <p>选中值：{{selected}}</p>
+        <h2>v-for循环选择框</h2>
+        <select name="selected" v-model="selectVal">
+            <option v-for="opt in options" :value="opt.value">{{opt.text}}</option>
+        </select>
+        <p>选中值：{{selectVal}}</p>
+
     </div>
 </div>
 <script>
@@ -23,7 +60,17 @@
         data:{
             msg:'',
             suggestshow:false,
-            textmsg:''
+            textmsg:'',
+            checked:false,
+            checkedName:[],
+            picked:'',
+            selected:'b',
+            options:[
+                {text:'选项a',value:'a'},
+                {text:'选项b',value:'b'},
+                {text:'选项c',value:'c'},
+            ],
+            selectVal:'a'
         }
     });
 </script>
