@@ -2,25 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>固定定位</title>
+    <title>固定定位&动画</title>
+    <link rel="stylesheet" href="../css/position-fixed.css">
+    <script src="../js/vue.js"></script>
     <style>
-        .demo{
-            width:400px;
-            height:500px;
-            background-color: #333;
-            margin-left: 200px;
-            position:fixed;
-            top:0;
-        }
+
     </style>
 </head>
 <body>
 <h2>固定定位position:fixed的元素，定位之后margin值仍然是有效的</h2>
-<div class="demo">
+<div class="demo1">
+
+</div>
+<div id="app">
+    <button
+        @click="isShow = !isShow"
+    >切换隐藏</button>
+    <transition name="fade">
+        <div class="transdemo" v-show="isShow">
+
+        </div>
+    </transition>
 
 </div>
 <script>
+    new Vue({
+        el:'#app',
+        data:{
+            isShow:true
+        },
 
+    })
 </script>
 </body>
 </html>
