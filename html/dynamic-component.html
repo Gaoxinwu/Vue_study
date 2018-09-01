@@ -16,7 +16,7 @@
                     :tab="tab"
                     @tabclick="tabclick"
                     class="btn"
-                    :class="{active:isButtonClicked}"
+
             ></button-component>
         </div>
 
@@ -25,8 +25,13 @@
 <script>
     Vue.component('button-component',{
         props:['tab'],
+        data:function(){
+            return {
+
+            }
+        },
         template:`
-            <div @click="$emit('tabclick')">{{tab}}</div>
+            <div :class="{active:isButtonClicked}" >{{tab}}</div>
         `
     });
     new Vue({
