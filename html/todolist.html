@@ -9,7 +9,7 @@
 <body>
 <div id="app" class="container">
     <form action="" @submit.prevent="addNewTodo">
-        <input type="text" :class="{errorinput:error}" v-model="addText" v-focus="error" placeholder="请输入待办事项" maxlength="50">
+        <input type="text" ref="listinput" :class="{errorinput:error}" v-model="addText" v-focus="error" placeholder="请输入待办事项" maxlength="50">
         <button>＋ 添加</button>
         <p v-show="error" class="tips">{{tips}}</p>
     </form>
@@ -54,8 +54,9 @@
                 let vm=this;
                 if(!vm.addText){
                     vm.tips='请输入待办项';
-                    vm.error=true;
-                    //待完成：提示错误的同时使输入框获得焦点
+                    //vm.error=true;
+                    vm.$refs['listinput'].focus();
+                    console.log(vm.$refs)
                     return;
                 }
                 vm.error=false;

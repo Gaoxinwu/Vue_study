@@ -12,6 +12,7 @@
         <div class="btn-box">
             <button-component
                     v-for="tab in tabs"
+                    :key="tab"
                     :tab="tab"
                     @tabclick="tabclick"
                     class="btn"
