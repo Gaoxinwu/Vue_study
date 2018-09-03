@@ -7,9 +7,26 @@
 </head>
 <body>
 <div id="app">
+    <base-layout>
+        <template slot="header">
+            <h1>这是标题</h1>
+        </template>
+        <p>主体部分</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores aspernatur assumenda at blanditiis delectus dolor excepturi facilis ipsam molestiae molestias neque porro quasi, quis ut voluptate voluptates voluptatibus.</p>
+        <template slot="footer">
+            <a href="">联系我们</a>
+            <a href="">关于我们</a>
+        </template>
+    </base-layout>
+    <hr>
     <alert-box>
         Something woring happended.
     </alert-box>
+    <hr>
+    <btns></btns>
+    <btns>上传图片</btns>
+    <btns>点击下载</btns>
+
 </div>
 <script>
     Vue.component('alert-box',{
@@ -20,6 +37,26 @@
           </div>
         `
     })
+    Vue.component('base-layout',{
+        template:`
+            <div>
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main><slot></slot></main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+        `
+    });
+    Vue.component('btns',{
+        template:`
+            <button>
+                <slot>提交</slot>
+            </button>
+        `
+    });
     new Vue({
         el:'#app',
         data: {
