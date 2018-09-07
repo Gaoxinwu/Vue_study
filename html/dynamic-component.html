@@ -14,9 +14,9 @@
                     v-for="tab in tabs"
                     :key="tab"
                     :tab="tab"
-                    @tabclick="tabclick"
+                    :btnclick="isButtonClicked"
+                    @click="tabclick"
                     class="btn"
-
             ></button-component>
         </div>
 
@@ -24,14 +24,14 @@
 </div>
 <script>
     Vue.component('button-component',{
-        props:['tab'],
+        props:['tab','btnclick'],
         data:function(){
             return {
 
             }
         },
         template:`
-            <div :class="{active:isButtonClicked}" >{{tab}}</div>
+            <div :class="{active:click}" >{{tab}}</div>
         `
     });
     new Vue({
