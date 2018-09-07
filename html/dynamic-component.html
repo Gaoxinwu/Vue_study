@@ -11,40 +11,34 @@
     <div class="container">
         <div class="btn-box">
             <button-component
-                    v-for="tab in tabs"
-                    :key="tab"
+                    v-for="(tab,idx) in tabs"
+                    :key="idx"
                     :tab="tab"
-                    :btnclick="isButtonClicked"
-                    @click="tabclick"
+                    @tabclick="tabclick(tab)"
                     class="btn"
+                    :class="{active:clickedname===tab}"
             ></button-component>
         </div>
-
+        <div class="showbox">{{clickedname}}</div>
     </div>
 </div>
 <script>
     Vue.component('button-component',{
-        props:['tab','btnclick'],
-        data:function(){
-            return {
-
-            }
-        },
+        props:['tab'],
         template:`
-            <div :class="{active:click}" >{{tab}}</div>
+            <div @click="$emit('tabclick')">{{tab}}</div>
         `
     });
     new Vue({
         el:'#app',
         data:{
             tabs:['HTML','CSS','JavaScript','Vue'],
-            isButtonClicked:false,
+            clickedname:'',
         },
         methods:{
-            tabclick:function(){
+            tabclick:function(tabname){
                 let vm=this;
-                console.log('clicked')
-                vm.isButtonClicked=true;
+                vm.clickedname=tabname;
             }
         }
     });

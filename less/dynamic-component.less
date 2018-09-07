@@ -2,15 +2,20 @@
 @base_bgcolor:#ddd;
 .btn-box{
   display:flex;
-
   .btn{
     padding:5px 10px;
     cursor:pointer;
     background-color: @base_bgcolor;
     border-radius: 3px;
+    transition: all .3s linear;
     &.active{
       background-color: darken(@base_bgcolor,50%);
       color:#fff;
     }
   }
+}
+.showbox{
+  width:400px;
+  height:300px;
+  border:1px solid #ddd;
 }

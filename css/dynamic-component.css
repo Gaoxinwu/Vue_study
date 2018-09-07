@@ -7,8 +7,14 @@
   cursor: pointer;
   background-color: #ddd;
   border-radius: 3px;
+  transition: all .3s linear;
 }
 .btn-box .btn.active {
   background-color: #5e5e5e;
   color: #fff;
+}
+.showbox {
+  width: 400px;
+  height: 300px;
+  border: 1px solid #ddd;
 }
