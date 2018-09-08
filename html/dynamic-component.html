@@ -60,8 +60,11 @@
                 vm.content=content;
             }
         },
-        mounted:{
-
+        mounted:function(){
+            this.clickedname=this.tabs[0].name;
+            this.content=this.tabs[0].content;
+            console.log(this.clickedname)
+            console.log(this.content)
         },
     });
 </script>
