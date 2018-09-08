@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡动画</title>
+    <link rel="stylesheet" href="../css/transition-01.css">
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="show=!show">transition</button>
+    <transition name="fade">
+        <div class="box" v-show="show">测试</div>
+    </transition>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            show:true,
+        },
+
+    });
+</script>
+</body>
+</html>
