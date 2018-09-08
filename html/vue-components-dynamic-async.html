@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <title>动态组件 & 异步组件</title>
@@ -17,7 +17,7 @@
         >{{ tab }}</button>
         <keep-alive>
             <component
-                    v-bind:is="currentTabComponent"
+                    :is="currentTabComponent"
                     class="tab"
             ></component>
         </keep-alive>
@@ -52,9 +52,9 @@
       <ul class="posts-sidebar">
         <li
           v-for="post in posts"
-          v-bind:key="post.id"
-          v-bind:class="{ selected: post === selectedPost }"
-					v-on:click="selectedPost = post"
+          :key="post.id"
+          :class="{ selected: post === selectedPost }"
+		  @click="selectedPost = post"
         >
           {{ post.title }}
         </li>
@@ -82,7 +82,7 @@
         el:'#app',
         data: {
             currentTab: 'Posts',
-            tabs: ['Posts', 'Archive','Test']
+            tabs: ['Posts', 'Archive']
         },
         computed: {
             currentTabComponent: function () {
@@ -90,6 +90,7 @@
             }
         }
     });
+
 </script>
 </body>
 </html>
