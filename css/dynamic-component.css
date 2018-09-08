@@ -16,5 +16,6 @@
 .showbox {
   width: 400px;
   height: 300px;
+  padding: 10px;
   border: 1px solid #ddd;
 }
