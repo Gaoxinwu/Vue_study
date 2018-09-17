@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令directive</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-focus="onblur">
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'blur指令'
+        },
+        methods:{
+            onblur:function(){
+                console.log(this.msg)
+            },
+        },
+        directives:{
+            focus:{
+                inserted:function(el){
+                    el.focus();
+                }
+            },
+            blur:{
+                bind:function (el) {
+                    el.blur();
+
+                },
+                update(){
+                    console.log('update被调用了')
+                }
+            }
+        },
+    });
+</script>
+</body>
+</html>
